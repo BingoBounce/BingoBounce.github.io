@@ -1,0 +1,190 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>pandas_cookbook | Ain't A Thing</title><meta name="description" content="pandas食用的一些食谱"><meta name="keywords" content="pandas-cookbook"><meta name="author" content="Lucas Chan"><meta name="copyright" content="Lucas Chan"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="canonical" href="https://bingobounce.github.io/2019/08/02/pandas-cookbook/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="pandas_cookbook"><meta name="twitter:description" content="pandas食用的一些食谱"><meta name="twitter:image" content="https://bingobounce.github.io/img/QRraea.png"><meta property="og:type" content="article"><meta property="og:title" content="pandas_cookbook"><meta property="og:url" content="https://bingobounce.github.io/2019/08/02/pandas-cookbook/"><meta property="og:site_name" content="Ain't A Thing"><meta property="og:description" content="pandas食用的一些食谱"><meta property="og:image" content="https://bingobounce.github.io/img/QRraea.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="next" title="《算法图解》学习笔记：上部" href="https://bingobounce.github.io/2019/08/02/Algorithm-1/"><meta name="google-site-verification" content="4Wddu4-AT6-v7UmSZOl4zCV1QKyMs9I5Bbf4GEfHptg"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"cookieDomain":"https://jerryc.me/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight_copy: 'true',
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    title: 'Bookmark',
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days'
+
+  
+}</script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#读取csv文件"><span class="toc-number">1.</span> <span class="toc-text"> 读取csv文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切片索引"><span class="toc-number">2.</span> <span class="toc-text"> 切片索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#统计"><span class="toc-number">3.</span> <span class="toc-text"> 统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pandas的series与numpy的array关系"><span class="toc-number">4.</span> <span class="toc-text"> pandas的Series与Numpy的array关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拷贝与融合数据"><span class="toc-number">5.</span> <span class="toc-text"> 拷贝与融合数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串操作"><span class="toc-number">6.</span> <span class="toc-text"> 字符串操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理脏数据"><span class="toc-number">7.</span> <span class="toc-text"> 处理&quot;脏&quot;数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间戳处理"><span class="toc-number">8.</span> <span class="toc-text"> 时间戳处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保存文件"><span class="toc-number">9.</span> <span class="toc-text"> 保存文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-number">10.</span> <span class="toc-text"> Reference🔗</span></a></li></ol></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/QRraea.png)"><div id="page-header"><span class="pull-left"> <a class="blog_title" id="site-name" href="/">Ain't A Thing</a></span><div class="open toggle-menu pull-right"><div class="menu-icon-first"></div><div class="menu-icon-second"></div><div class="menu-icon-third"></div></div><span class="pull-right menus"><div class="mobile_author_icon"><img class="lozad" data-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'"><div class="mobile_author-info__description"></div></div><hr><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-coffee"></i><span> Message</span></a><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a><script>document.body.addEventListener('touchstart', function(){ });</script></div></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title"><div class="posttitle">pandas_cookbook</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> Created 2019-08-02<span class="post-meta__separator">|</span><i class="fa fa-history" aria-hidden="true"></i> Updated 2019-08-02</time><span class="post-meta__separator mobile_hidden">|</span><span class="mobile_hidden"><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/pandas/">pandas</a></span><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">2.1k</span><span class="post-meta__separator">|</span><span>Reading time: 7 min</span><span class="post-meta__separator">|</span><span>Post View: </span><span id="busuanzi_value_page_pv"></span></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><blockquote>
+<p>本文是github项目pandas-cookbook的中文翻译项目的学习笔记，原项目链接在文章Reference中注明。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="读取csv文件"><a class="markdownIt-Anchor" href="#读取csv文件"></a> 读取csv文件</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">'xx.csv'</span>,, sep=<span class="string">';'</span>, encoding=<span class="string">'latin1'</span>, parse_dates=[<span class="string">'Date'</span>], dayfirst=<span class="literal">True</span>, index_col=<span class="string">'Date'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>sep=';'</code>将字段分隔符改为<code>;</code>。字符类型，指定分隔符。默认使用&quot;,&quot;分割（csv文件一般以逗号分割)</li>
+<li><code>names</code>: array-like 可以设置添加表头，如数据有表头，但想用新的表头，可以设置<code>header=0,names=['a','b']</code>实现表头定制。</li>
+<li><code>header</code>
+<ul>
+<li><code>header=None</code>表示原始文件没有列索引，这样该命令会自动加上列索引</li>
+<li><code>header=0</code>:表示文件<strong>第1行</strong>为列索引，可以添加<strong>names</strong>来替换原来的列索引(可以使用range函数)</li>
+</ul>
+</li>
+<li><code>encoding='latin1'</code>修改编码格式为<code>'latin1'</code> (默认是 <code>'utf8'</code>)</li>
+<li><code>parse_dates=['Date']</code>处理 'Date’字段的日期格式</li>
+<li><code>dayfirst=True</code>告诉pandas日期的格式是“天”在前而不是“月”在前</li>
+<li><code>index_col='Date'</code>将Date列设为索引（Index）。
+<ul>
+<li><code>index_col</code>：指定数据中<strong>哪一列</strong>作为Dataframe的行索引,也可以指定多列形成层次索引，默认为None.系统会自动加上行索引。</li>
+</ul>
+</li>
+</ul>
+<p>其他参数：</p>
+<ul>
+<li><code>delimiter</code>:字符类型，定界符，若指定该参数，则sep失效</li>
+<li><code>skiprows=n</code>: 忽略前n行数据</li>
+<li><code>parse_dates</code>:
+<ul>
+<li>布尔类型： 解析索引</li>
+<li>列表/整数/表头(names): 如[1,2,3]-&gt;解析<strong>1，2，3列</strong>的值作为独立日期列</li>
+<li>嵌套列表：如[[1,3]]-&gt;==<strong>合并</strong>==1，3列作为ig日期列使用<br>
+字典：如<code>{'foo':[1,3]}</code>-&gt;将1，3列合并，合并列起名为<code>'foo'</code></li>
+<li>日期显示格式：<br>
+<code>dayfirst</code> : boolean, default False :Day/Month格式的日期类型</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># parse_dates实例</span></span><br><span class="line"><span class="comment"># 将time1和time2两列解析为日期格式</span></span><br><span class="line">df=pd.read_csv(file_path,parse_dates=[<span class="string">'time1'</span>,<span class="string">'time2'</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>na_values= NaN</code>: 标量/str等，设置一组用于替换NA/NaN的值</li>
+<li><code>na_filter=False</code>:boolean, default True，是否检查丢失值（空字符串或者是空值）对于大文件来说数据集中没有空值，设定na_filter=False可以提升读取速度</li>
+<li><code>thousands=','</code>: str, default None 千分位分割符，如“，”或者“.&quot;</li>
+<li><code>usecols</code>:可以指定原数据集中，<strong>所使用的列</strong>。当<code>usecols=[0,1,2,3]</code>时，即选中前4列，之后令第一列为行索引.</li>
+<li><code>nrows</code>：可以给出从原始数据集中的所读取的<strong>行数</strong>，目前只能从第一行开始到nrows行</li>
+</ul>
+<p>如果想要修改dataframe的一些列名：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.columns = [ ... ]</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="切片索引"><a class="markdownIt-Anchor" href="#切片索引"></a> 切片索引</h2>
+<p>将数据绘制成图像：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_ = df.plot(figsize=(<span class="number">15</span>,<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+<p>获取前6行数据:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[:<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+<p>选取第一列：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[:<span class="number">6</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>选取多列数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取索引名为index1和index2的两列数据</span></span><br><span class="line">df[[<span class="string">'index1'</span>, <span class="string">'index2'</span>]]</span><br></pre></td></tr></table></figure>
+<p>只选取前10行：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[[<span class="string">'index1'</span>, <span class="string">'index2'</span>]][:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<p>使用条件索引获取相应数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取df中索引名为index的列中，所有值为1的数据</span></span><br><span class="line">df[df[<span class="string">'index'</span>] == <span class="number">1</span>] <span class="comment"># df[index] = 1得到一个布尔值列表</span></span><br></pre></td></tr></table></figure>
+<p>也可以结合布尔操作来获取条件数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">value_larger_one = (df[<span class="string">'index'</span>] &gt; <span class="number">1</span>)</span><br><span class="line">value_less_zero  = (df[<span class="string">'index'</span>] &lt; <span class="number">0</span>)</span><br><span class="line">df[value_larger_one | value_less_zero ] <span class="comment"># "或"条件，"和"条件可以使用&amp;，"非"：!</span></span><br></pre></td></tr></table></figure>
+<p>返回Dataframe的索引：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index <span class="comment"># 返回一个索引列表，以及索引的相关属性</span></span><br><span class="line"><span class="comment"># 也可以对index重新赋值</span></span><br><span class="line">df.index = [...]</span><br></pre></td></tr></table></figure>
+<p>pandas有一系列获取time series的函数，可以获得每一行数据对应的每个月第几天，星期几：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index.day</span><br><span class="line">df.index.weekday</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="统计"><a class="markdownIt-Anchor" href="#统计"></a> 统计</h2>
+<p>统计每项索引数据的总数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">'index'</span>].value_counts()</span><br></pre></td></tr></table></figure>
+<p>只观察最多的5项：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">'index'</span>].value_counts()[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p>更直观地绘制柱状图：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">'index'</span>].value_counts().plot(kind=<span class="string">'bar'</span>)</span><br></pre></td></tr></table></figure>
+<p>Dataframe可以使用<code>groupby()</code>方法，对数据进行分类。也可以用作统计数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># df.groupby('index_name').aggregate(sum) 的意思就是说，首先将数据按照索引index_name内容分组，然后对每一组的数据求和。</span></span><br><span class="line">df_counts = df.groupby(<span class="string">'index_name'</span>).aggregate(sum)</span><br><span class="line"><span class="comment"># 这里的sum函数还可以换为其他的统计函数，例如max、numpy.median,...</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>dropna</code>函数丢弃数据中一些几乎全为空的列</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># dropna中的参数axis=1的意思是去掉整列而不是行</span></span><br><span class="line"><span class="comment"># how=‘any’的意思是任何有空值的列都去掉</span></span><br><span class="line">df = df.dropna(axis=<span class="number">1</span>, how=<span class="string">'any'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ <code>dropna</code>函数只是将包含空值的列数据都删去，而不删除列。</p>
+</blockquote>
+<p>如果想要删除整个列，则需要使用<code>drop</code>函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用drop函数，删除指定的列index1, index2</span></span><br><span class="line">df = df.drop([<span class="string">'index1, index2'</span>], axis=<span class="number">1</span>) <span class="comment"># axis=1同样表示删除整列，默认是删除整行</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>resample()</code>方法，将df数据进行重采样，可对时间序列数据重新采样和频率转换</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">参数说明：</span></span><br><span class="line"><span class="string">	freq： 表示重采样频率，例如‘M'、‘5min'，Second(15)</span></span><br><span class="line"><span class="string">	how：用于产生聚合值的函数名或数组函数</span></span><br><span class="line"><span class="string">	closed： 在降采样时，各时间段的哪一段是闭合的，‘right'或‘left'，默认‘right'</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">_ = df[<span class="string">'index'</span>].resample(<span class="string">'M'</span>, how=np.median)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="pandas的series与numpy的array关系"><a class="markdownIt-Anchor" href="#pandas的series与numpy的array关系"></a> pandas的Series与Numpy的array关系</h2>
+<p>DataFrame中的每一列都是<code>pd.Series</code>类型的数据。pandas中Series类型的数据实际上是numpy array类型的数据，如果我们对任何<code>Series</code>类型的数据使用<code>.values</code>方法，则可以得到内部的numpy array。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">返回结果</span></span><br><span class="line"><span class="string">0    1</span></span><br><span class="line"><span class="string">1    2</span></span><br><span class="line"><span class="string">2    3</span></span><br><span class="line"><span class="string">dtype: int64</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]).values</span><br><span class="line"><span class="comment"># array([1,2,3])</span></span><br><span class="line"></span><br><span class="line">np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="comment"># array([1,2,3])</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>💡 数组的二值化操作：对数据进行条件判断，返回一个布尔值列表，满足条件的数据值为True,代表1；不满足的即为False，代表0.</p>
+<p>可以将二值化向量转换为0,1表示：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; vec.astype(float)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote></blockquote>
+<blockquote>
+<p>💡 在python2版本中，除法是使用整除，即取整去余，而在python3中，则是返回浮点型。为了使得python2中也返回浮点型，可以导入模块<code>from __future__ import division</code>。</p>
+</blockquote>
+<hr>
+<h2 id="拷贝与融合数据"><a class="markdownIt-Anchor" href="#拷贝与融合数据"></a> 拷贝与融合数据</h2>
+<p>拷贝所需的Dataframe:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df_copy = df[[<span class="string">'index'</span>]].copy()</span><br></pre></td></tr></table></figure>
+<p>向Dataframe中添加新的列：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.loc[:, <span class="string">'index_name'</span>] <span class="comment"># 第二个属性是给新添加的列的索引</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>concat</code>函数可以将所有数据融合在一起：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将dataframe#2数据与dataframe#1融合</span></span><br><span class="line">df = pd.concat([df_1, df_2])</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="字符串操作"><a class="markdownIt-Anchor" href="#字符串操作"></a> 字符串操作</h2>
+<p>pandas提供了一些向量化的函数，来处理某些列是否包含<strong>指定字符串</strong>的问题：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查dataframe某列中是否包含字符串'string'</span></span><br><span class="line">is_string = df[<span class="string">'index'</span>].str.contains(<span class="string">'string'</span>) <span class="comment"># 返回了一个二值向量</span></span><br></pre></td></tr></table></figure>
+<p>将字符串切片：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = df.str.slice(start, end) <span class="comment"># 参数为切割的索引区间，只取这个区间内的字符串</span></span><br></pre></td></tr></table></figure>
+<p>当想要对数字字符串进行<strong>排序</strong>，可以使用<code>sort()</code>方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 假设我们选取index1,index2,index3三列，并且按照index1列数字排序</span></span><br><span class="line">df[[<span class="string">'index1'</span>,<span class="string">'index2'</span>,<span class="string">'index3'</span>]].sort(<span class="string">'index1'</span>)</span><br><span class="line"><span class="comment"># sort方法还可以传入参数ascending,指定排序是升序还是降序</span></span><br></pre></td></tr></table></figure>
+<p>若想将所有字符串大写，可用如下操作:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">'index'</span>].str.upper()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="处理脏数据"><a class="markdownIt-Anchor" href="#处理脏数据"></a> 处理&quot;脏&quot;数据</h2>
+<p>为了检查数据，可以先使用<code>.unique()</code>方法将dataframe中所有值列出来</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.unique()</span><br></pre></td></tr></table></figure>
+<p>当一些空值没有被pandas处理，而被转换为类似’N/A’ 和’NO CLUE’的字符串类型，则我们需要将其转换为通常的nan类型.还可能有一些数据是浮点型，而被转换为了字符串型。我们需要将所有数据都转换为string类型：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在读取csv文件时，可以传入na_values参数来处理这些缺失值</span></span><br><span class="line"><span class="comment"># 指定csv文件中需要转换为string类型的列index</span></span><br><span class="line">na_values = [<span class="string">'NO CLUE'</span>, <span class="string">'N/A'</span>, <span class="string">'0'</span>] <span class="comment"># 定义缺失值可能形式的列表</span></span><br><span class="line">df = pd.read_csv(<span class="string">'../xx.csv'</span>, na_values=na_values, dtype=&#123;<span class="string">'index'</span>: str&#125;))</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="时间戳处理"><a class="markdownIt-Anchor" href="#时间戳处理"></a> 时间戳处理</h2>
+<p>用pandas解析时间戳最神奇的地方在于，numpy的datetimes本身就是以unix的时间戳形式保存的，因此，我们要做的就是，告诉pandas这些int型数据就是时间戳。</p>
+<p>如果我们有一个时间段用秒或者微秒来表示的，那么直接转换<code>datetime64</code>类型，pandas就可以帮我们处理了。</p>
+<p>我们可以使用<code>pd.to_datetime</code>函数来完成int型时间戳到datetime类型的转换:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 先将时间戳对应的列数据由字符串转换为int类型</span></span><br><span class="line">df[<span class="string">'time_stamp'</span>] = df[<span class="string">'time_stamp'</span>].astype(int) <span class="comment"># 强制转换</span></span><br><span class="line">df[<span class="string">'time_stamp'</span>] = pd.to_datetime(df[<span class="string">'time_stamp'</span>], unit=<span class="string">'s'</span>)</span><br><span class="line"><span class="comment"># 此时，time_stamp列的数据类型变为&lt;M8[ns]，即datetime64</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>to_datetime</code>函数可用指定格式化日期时间，如:<code>pd.to_datetime('2019/8/3 10:24:48', format='%Y/%m/%d %H:%M:%S')</code></p>
+</blockquote>
+<blockquote>
+<p>其中参数<code>unit</code>是输入数据的单位，其为字符串类型：<code>string[D,s,ms,us,ns]</code>,默认是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mo mathvariant="normal">′</mo></msup><mi>n</mi><msup><mi>s</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">&#x27;ns&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.751892em;vertical-align:0em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
+</blockquote>
+<hr>
+<h2 id="保存文件"><a class="markdownIt-Anchor" href="#保存文件"></a> 保存文件</h2>
+<p>将数据直接保存到本地的csv文件，方便以后读取：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.to_csv(<span class="string">'../xx/data.csv'</span>) <span class="comment"># 存储目录</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="reference"><a class="markdownIt-Anchor" href="#reference"></a> Reference🔗</h2>
+<ol>
+<li><a href="https://github.com/jvns/pandas-cookbook" target="_blank" rel="noopener">Github: pandas-cookbook</a></li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucas Chan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://bingobounce.github.io/2019/08/02/pandas-cookbook/">https://bingobounce.github.io/2019/08/02/pandas-cookbook/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/pandas-cookbook/">pandas-cookbook    </a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d33fdf87eb6c9a7" async></script></div></div><div class="post-reward"><a class="reward-buttom"><i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lozad post-qr-code__img" data-src="/img/wechat.jpg"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lozad post-qr-code__img" data-src="/img/alipay.jpg"><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2019/08/02/Algorithm-1/"><img class="next_cover lozad" data-src="/img/algorithm.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Next Post</div><div class="next_info"><span>《算法图解》学习笔记：上部</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span> Recommend</span></div><div class="relatedPosts_list"></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> <span>Comment</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = 'true' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'X5gVrHkkd6SlqAAJLsxK8cWw-gzGzoHsz',
+  appKey:'8TlInhbKia6LM1d5ozLTBzCb',
+  placeholder:'Please leave your footprints',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'en',
+  recordIP: true
+});</script></div></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2019 By Lucas Chan</div><div class="footer_custom_text">Hi, welcome to my <a href="https://bingobounce.github.io/">blog</a>!</div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><section class="rightside" id="rightside"><i class="fa fa-book" id="readmode" title="Read Mode"> </i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion">簡</a><i class="fa fa-moon-o nightshift" id="nightshift" title="Dark Mode"></i></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script async src="/js/search/local-search.js"></script><script src="/js/nightshift.js"></script><script id="ribbon" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/js/piao.js"></script><script src="/js/tw_cn.js"></script><script>translateInitilization()
+
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@1.2.2/instantpage.min.js" type="module"></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
