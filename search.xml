@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>每日一记： 第1话</title>
+      <link href="/2019/08/05/note-1/"/>
+      <url>/2019/08/05/note-1/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h2><p>由于平时上课时间比较长，plus数学证明的摧残≡(▔﹏▔)≡，只能使用一些碎片时间来学习编程了，但还是会不定时出一些系统性学习的博客。</p><p>秉承着每天都积累一些新知识的初心，希望自己能够坚持下去，fighting!</p><h2 id="第1话参数管家rcparams登场"><a class="markdownIt-Anchor" href="#第1话参数管家rcparams登场"></a> 第1话：参数管家——rcParams登场</h2><h3 id="第一幕-样式表的祭献"><a class="markdownIt-Anchor" href="#第一幕-样式表的祭献"></a> 第一幕: 样式表的祭献</h3><p>我们可以使用一种创建自定义样式的方式: <strong>通过向<code>style.use</code>方法传入样式表的路径或者URL链接</strong>。</p><p>另外，可以创建一个<code>mpl_configdir/stylelib</code>目录，并且将样式内容写入<code>&lt;style-name&gt;.mplstyle</code>文件中，我们就可以直接通过使用<code>style.use(&lt;style-name&gt;)</code>的方式来复用自定义的样式表。</p><p><code>mpl_configdir</code>目录默认情况下， 应该创建在系统的<code>matplotlib</code>配置目录下，可以通过<kbd>matplotlib.get_configdir()</kbd>方法来获取目录路径。</p><p>在代码中，如果默认样式与<code>&lt;style-name&gt;.mplstyle</code>文件中自定义样式具有相同的名称，<code>mpl_configdir/stylelib</code>中的自定义样式表将覆盖由matplotlib定义的样式表。</p><p>⚙️ <code>&lt;style-name&gt;.mplstyle</code>文件每一行设置一个自定义参数。假设我们创建了<code>background.mplstyle</code>文件：</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">axes.titlesize : 24</span><br><span class="line">axes.labelsize : 20</span><br><span class="line">lines.linewidth : </span><br><span class="line">lines.markersize : 10</span><br></pre></td></tr></table></figure><p>并且在代码中调用设置：</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.style.use([<span class="string">'background'</span>]) <span class="comment"># 可以传递多个.mplstyle文件</span></span><br></pre></td></tr></table></figure><hr><h3 id="第二幕"><a class="markdownIt-Anchor" href="#第二幕"></a> 第二幕</h3><p>如果只想为特定的代码块使用自定义样式，不希望更改全局样式，则<code>plt.style</code>包为我们提供了一个上下文管理器，用于将更改限制在特定的范围内。要隔离样式更改，可以编写如下内容:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"> <span class="keyword">with</span> plt.style.context((<span class="string">'background'</span>)):</span><br><span class="line">        plt.plot(...)<span class="comment"># 自定义样式绘图</span></span><br></pre></td></tr></table></figure><hr><h3 id="第三幕rcparams登场"><a class="markdownIt-Anchor" href="#第三幕rcparams登场"></a> 第三幕：rcParams登场</h3><p>使用样式表自定义修改样式是一种静态方法，而设置<code>rcParams</code>可以动态地修改matplotlib全局样式。</p><p><code>rcParams</code>是Matplotlib中具有自定义参数的全局类字典变量。Matplotlib的几乎每个方面参数都可以在这里配置，例如在同一图形上显示多个绘图时，每个绘图通过一组预定义的颜色进行颜色循环：<kbd>rcParams[‘axes.color_cycle’] = [‘r’, ‘k’, ‘c’]</kbd>。所有rc设置都存储在名为matplotlib的类字典变量中。</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line">mpl.rcParams[<span class="string">'lines.color'</span>] = <span class="string">'r'</span><span class="comment"># 设置曲线颜色为红色</span></span><br><span class="line">mpl.rcParams[<span class="string">'lines.linewidth'</span>] = <span class="number">2</span></span><br></pre></td></tr></table></figure><p>还可以使用<kbd>matplotlib.rc()</kbd>命令一次修改一个组中的<strong>多个</strong>设置，使用关键字参数:</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line">mpl.rc(<span class="string">'lines'</span>, linewidth=<span class="number">2</span>, color=<span class="string">'r'</span>)</span><br></pre></td></tr></table></figure><blockquote><p>使用<kbd>matplotlib.rcdefaults()</kbd>方法将会回复matplotlib默认设置。</p></blockquote><p>此外，还可以通过将它们保存在名为<code>matplotlibrc</code>的ASCII文本文件中来指定<strong>永久自定义</strong>选项，该文件可以存储在当前目录(用于本地选项)或<code>~/.matplotlib</code>中(用于全局选项)。</p><p>Matplotlib使用<code>matplotlibrc</code>配置文件定制各种属性，我们称之为<kbd>rc settings</kbd>或<kbd>rc parameters</kbd>。我们可以通过该文件控制matplotlib中几乎所有属性的默认值:图形大小和dpi、行宽、颜色和样式、轴、轴和网格属性、文本和字体属性等等。</p><p>在这个文件中，每一行都包含一个自定义参数，例如<kbd>axes.color_cycle: [‘r’, ‘k’, ‘c’]</kbd>。</p><p>可以使用<kbd>matplotlib.matplotlib_fname()</kbd>方法来查找<code>matplotlibrc</code>文件的路径。</p><hr><h2 id="灵感来源"><a class="markdownIt-Anchor" href="#灵感来源"></a> 灵感来源</h2><ol><li>Cyrille Rossant：《Learning IPython for Interactive Computing and Data Visualization》</li><li><a href="https://matplotlib.org/users/customizing.html" target="_blank" rel="noopener">matplotlib docs: Customizing matplotlib</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Data Visualization </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 每日一记 </tag>
+            
+            <tag> matplotlib </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>matplotlib tutorials</title>
       <link href="/2019/08/04/matplotlib/"/>
       <url>/2019/08/04/matplotlib/</url>
@@ -132,9 +161,9 @@
             
             <tag> python </tag>
             
-            <tag> 教程 </tag>
+            <tag> matplotlib </tag>
             
-            <tag> matplotlib-&gt;spines </tag>
+            <tag> 教程 </tag>
             
         </tags>
       
