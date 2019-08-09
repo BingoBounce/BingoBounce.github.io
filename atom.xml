@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ain&#39;t A Thing</title>
+  
+  <subtitle>Echoes</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://bingobounce.github.io/"/>
+  <updated>2019-08-08T09:41:40.159Z</updated>
+  <id>https://bingobounce.github.io/</id>
+  
+  <author>
+    <name>Lucas Chan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每日一记： 第3话</title>
+    <link href="https://bingobounce.github.io/2019/08/08/note-3/"/>
+    <id>https://bingobounce.github.io/2019/08/08/note-3/</id>
+    <published>2019-08-08T08:13:42.000Z</published>
+    <updated>2019-08-08T09:41:40.159Z</updated>
+    
+    <summary type="html">
+    
+      matplotlib中绘图的一些小技巧(ipython生成svg,设置图像对象参数等)
+    
+    </summary>
+    
+      <category term="python" scheme="https://bingobounce.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
+    
+      <category term="每日一记" scheme="https://bingobounce.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每日一记： 第2话</title>
+    <link href="https://bingobounce.github.io/2019/08/07/note-2/"/>
+    <id>https://bingobounce.github.io/2019/08/07/note-2/</id>
+    <published>2019-08-07T05:12:27.000Z</published>
+    <updated>2019-08-08T08:17:32.586Z</updated>
+    
+    <summary type="html">
+    
+      Cython的基础学习
+    
+    </summary>
+    
+      <category term="python" scheme="https://bingobounce.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
+    
+      <category term="每日一记" scheme="https://bingobounce.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《算法图解》学习笔记：中部</title>
+    <link href="https://bingobounce.github.io/2019/08/06/Algorithm-2/"/>
+    <id>https://bingobounce.github.io/2019/08/06/Algorithm-2/</id>
+    <published>2019-08-06T03:35:31.000Z</published>
+    <updated>2019-08-09T02:18:32.249Z</updated>
+    
+    <summary type="html">
+    
+      中部内容：快速排序
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://bingobounce.github.io/categories/Algorithm/"/>
+    
+    
+      <category term="Algorithm" scheme="https://bingobounce.github.io/tags/Algorithm/"/>
+    
+      <category term="图书" scheme="https://bingobounce.github.io/tags/%E5%9B%BE%E4%B9%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每日一记： 第1话</title>
+    <link href="https://bingobounce.github.io/2019/08/05/note-1/"/>
+    <id>https://bingobounce.github.io/2019/08/05/note-1/</id>
+    <published>2019-08-05T01:50:46.000Z</published>
+    <updated>2019-08-07T10:41:41.351Z</updated>
+    
+    <summary type="html">
+    
+      开启每日积累的新篇章
+    
+    </summary>
+    
+      <category term="Data Visualization" scheme="https://bingobounce.github.io/categories/Data-Visualization/"/>
+    
+    
+      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
+    
+      <category term="matplotlib" scheme="https://bingobounce.github.io/tags/matplotlib/"/>
+    
+      <category term="每日一记" scheme="https://bingobounce.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>matplotlib tutorials</title>
+    <link href="https://bingobounce.github.io/2019/08/04/matplotlib/"/>
+    <id>https://bingobounce.github.io/2019/08/04/matplotlib/</id>
+    <published>2019-08-04T05:01:06.000Z</published>
+    <updated>2019-08-04T07:16:10.235Z</updated>
+    
+    <summary type="html">
+    
+      matplotlib库的使用手则
+    
+    </summary>
+    
+      <category term="Data Visualization" scheme="https://bingobounce.github.io/categories/Data-Visualization/"/>
+    
+    
+      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
+    
+      <category term="matplotlib" scheme="https://bingobounce.github.io/tags/matplotlib/"/>
+    
+      <category term="教程" scheme="https://bingobounce.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jupyter-ipywidgets使用手册</title>
+    <link href="https://bingobounce.github.io/2019/08/02/jupyter-ipywidgets/"/>
+    <id>https://bingobounce.github.io/2019/08/02/jupyter-ipywidgets/</id>
+    <published>2019-08-02T09:40:05.000Z</published>
+    <updated>2019-08-04T04:54:50.488Z</updated>
+    
+    <summary type="html">
+    
+      Jupyter插件ipywidgets的使用手册
+    
+    </summary>
+    
+      <category term="Jupyter" scheme="https://bingobounce.github.io/categories/Jupyter/"/>
+    
+    
+      <category term="教程" scheme="https://bingobounce.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="Jupyter Widgets" scheme="https://bingobounce.github.io/tags/Jupyter-Widgets/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pandas_cookbook</title>
+    <link href="https://bingobounce.github.io/2019/08/02/pandas-cookbook/"/>
+    <id>https://bingobounce.github.io/2019/08/02/pandas-cookbook/</id>
+    <published>2019-08-02T03:52:35.000Z</published>
+    <updated>2019-08-06T06:58:07.844Z</updated>
+    
+    <summary type="html">
+    
+      pandas库的一些食谱.本文是github项目pandas-cookbook的中文翻译项目的学习笔记，原项目链接在文章Reference中注明。
+    
+    </summary>
+    
+      <category term="pandas" scheme="https://bingobounce.github.io/categories/pandas/"/>
+    
+    
+      <category term="教程" scheme="https://bingobounce.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="pandas-cookbook" scheme="https://bingobounce.github.io/tags/pandas-cookbook/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《算法图解》学习笔记：上部</title>
+    <link href="https://bingobounce.github.io/2019/08/02/Algorithm-1/"/>
+    <id>https://bingobounce.github.io/2019/08/02/Algorithm-1/</id>
+    <published>2019-08-02T02:09:16.000Z</published>
+    <updated>2019-08-09T09:25:14.503Z</updated>
+    
+    <summary type="html">
+    
+      本系列文章是对《算法图解》该书的一个学习性笔记。上部内容：算法简介、选择排序、大O表示法、递归。
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="https://bingobounce.github.io/categories/Algorithm/"/>
+    
+    
+      <category term="Algorithm" scheme="https://bingobounce.github.io/tags/Algorithm/"/>
+    
+      <category term="图书" scheme="https://bingobounce.github.io/tags/%E5%9B%BE%E4%B9%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Figure out How &quot;spines&quot; in matplotlib works</title>
+    <link href="https://bingobounce.github.io/2019/07/26/matplotlib_spines/"/>
+    <id>https://bingobounce.github.io/2019/07/26/matplotlib_spines/</id>
+    <published>2019-07-26T04:25:33.000Z</published>
+    <updated>2019-08-05T01:56:00.177Z</updated>
+    
+    <summary type="html">
+    
+      matplotlib中图像坐标轴(spines)的理解与相关个性化
+    
+    </summary>
+    
+      <category term="Data Visualization" scheme="https://bingobounce.github.io/categories/Data-Visualization/"/>
+    
+    
+      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
+    
+      <category term="matplotlib" scheme="https://bingobounce.github.io/tags/matplotlib/"/>
+    
+      <category term="教程" scheme="https://bingobounce.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Star import is a bad idea!</title>
+    <link href="https://bingobounce.github.io/2019/07/25/import/"/>
+    <id>https://bingobounce.github.io/2019/07/25/import/</id>
+    <published>2019-07-25T10:03:52.000Z</published>
+    <updated>2019-08-02T10:30:32.895Z</updated>
+    
+    <summary type="html">
+    
+      关于import *的一些探讨
+    
+    </summary>
+    
+      <category term="python" scheme="https://bingobounce.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
+    
+      <category term="Warning" scheme="https://bingobounce.github.io/tags/Warning/"/>
+    
+  </entry>
+  
+</feed>
