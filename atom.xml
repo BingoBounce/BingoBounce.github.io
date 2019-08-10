@@ -41,11 +41,14 @@
     <link href="https://bingobounce.github.io/2019/08/08/note-3/"/>
     <id>https://bingobounce.github.io/2019/08/08/note-3/</id>
     <published>2019-08-08T08:13:42.000Z</published>
-    <updated>2019-08-08T09:41:40.159Z</updated>
+    <updated>2019-08-10T10:40:59.481Z</updated>
     
     <summary type="html">
     
-      matplotlib中绘图的一些小技巧(ipython生成svg,设置图像对象参数等)
+      &lt;p&gt;matplotlib中绘图的一些小技巧(ipython生成svg,设置图像对象参数等)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;封面： Photo by &lt;a href=&quot;https://unsplash.com/@jontyson?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Jon Tyson&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -63,11 +66,14 @@
     <link href="https://bingobounce.github.io/2019/08/07/note-2/"/>
     <id>https://bingobounce.github.io/2019/08/07/note-2/</id>
     <published>2019-08-07T05:12:27.000Z</published>
-    <updated>2019-08-08T08:17:32.586Z</updated>
+    <updated>2019-08-10T10:40:08.910Z</updated>
     
     <summary type="html">
     
-      Cython的基础学习
+      &lt;p&gt;Cython的基础学习&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;封面： Photo by &lt;a href=&quot;https://unsplash.com/@worldsbetweenlines?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Patrick Hendry&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -85,11 +91,11 @@
     <link href="https://bingobounce.github.io/2019/08/06/Algorithm-2/"/>
     <id>https://bingobounce.github.io/2019/08/06/Algorithm-2/</id>
     <published>2019-08-06T03:35:31.000Z</published>
-    <updated>2019-08-09T02:18:32.249Z</updated>
+    <updated>2019-08-10T10:36:38.819Z</updated>
     
     <summary type="html">
     
-      中部内容：快速排序
+      &lt;p&gt;中部内容：快速排序&lt;/p&gt;
     
     </summary>
     
@@ -107,11 +113,14 @@
     <link href="https://bingobounce.github.io/2019/08/05/note-1/"/>
     <id>https://bingobounce.github.io/2019/08/05/note-1/</id>
     <published>2019-08-05T01:50:46.000Z</published>
-    <updated>2019-08-07T10:41:41.351Z</updated>
+    <updated>2019-08-10T10:39:38.182Z</updated>
     
     <summary type="html">
     
-      开启每日积累的新篇章
+      &lt;p&gt;开启每日积累的新篇章&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;封面：Photo by &lt;a href=&quot;https://unsplash.com/@wildhoney?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;John Fowler&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/t/nature?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -120,9 +129,9 @@
     
       <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
     
-      <category term="每日一记" scheme="https://bingobounce.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/"/>
-    
       <category term="matplotlib" scheme="https://bingobounce.github.io/tags/matplotlib/"/>
+    
+      <category term="每日一记" scheme="https://bingobounce.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/"/>
     
   </entry>
   
@@ -131,11 +140,11 @@
     <link href="https://bingobounce.github.io/2019/08/04/matplotlib/"/>
     <id>https://bingobounce.github.io/2019/08/04/matplotlib/</id>
     <published>2019-08-04T05:01:06.000Z</published>
-    <updated>2019-08-04T07:16:10.235Z</updated>
+    <updated>2019-08-10T10:38:29.888Z</updated>
     
     <summary type="html">
     
-      matplotlib库的使用手则
+      &lt;p&gt;matplotlib库的使用手则&lt;/p&gt;
     
     </summary>
     
@@ -155,11 +164,11 @@
     <link href="https://bingobounce.github.io/2019/08/02/jupyter-ipywidgets/"/>
     <id>https://bingobounce.github.io/2019/08/02/jupyter-ipywidgets/</id>
     <published>2019-08-02T09:40:05.000Z</published>
-    <updated>2019-08-04T04:54:50.488Z</updated>
+    <updated>2019-08-10T10:37:44.571Z</updated>
     
     <summary type="html">
     
-      Jupyter插件ipywidgets的使用手册
+      &lt;p&gt;Jupyter插件ipywidgets的使用手册&lt;/p&gt;
     
     </summary>
     
@@ -177,11 +186,11 @@
     <link href="https://bingobounce.github.io/2019/08/02/pandas-cookbook/"/>
     <id>https://bingobounce.github.io/2019/08/02/pandas-cookbook/</id>
     <published>2019-08-02T03:52:35.000Z</published>
-    <updated>2019-08-06T06:58:07.844Z</updated>
+    <updated>2019-08-10T12:57:55.216Z</updated>
     
     <summary type="html">
     
-      pandas库的一些食谱.本文是github项目pandas-cookbook的中文翻译项目的学习笔记，原项目链接在文章Reference中注明。
+      &lt;p&gt;pandas库的一些食谱.本文是github项目pandas-cookbook的中文翻译项目的学习笔记，原项目链接在文章Reference中注明。&lt;/p&gt;
     
     </summary>
     
@@ -199,11 +208,14 @@
     <link href="https://bingobounce.github.io/2019/08/02/Algorithm-1/"/>
     <id>https://bingobounce.github.io/2019/08/02/Algorithm-1/</id>
     <published>2019-08-02T02:09:16.000Z</published>
-    <updated>2019-08-09T09:25:14.503Z</updated>
+    <updated>2019-08-10T10:35:40.746Z</updated>
     
     <summary type="html">
     
-      本系列文章是对《算法图解》该书的一个学习性笔记。上部内容：算法简介、选择排序、大O表示法、递归。
+      &lt;p&gt;本系列文章是对《算法图解》该书的一个学习性笔记。上部内容：算法简介、选择排序、大O表示法、递归。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;文章中有大量图片，初次加载可能会比较慢&lt;del&gt;(￣▽￣)&lt;/del&gt;*&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -221,11 +233,14 @@
     <link href="https://bingobounce.github.io/2019/07/26/matplotlib_spines/"/>
     <id>https://bingobounce.github.io/2019/07/26/matplotlib_spines/</id>
     <published>2019-07-26T04:25:33.000Z</published>
-    <updated>2019-08-05T01:56:00.177Z</updated>
+    <updated>2019-08-10T10:38:58.530Z</updated>
     
     <summary type="html">
     
-      matplotlib中图像坐标轴(spines)的理解与相关个性化
+      &lt;p&gt;matplotlib中图像坐标轴(spines)的理解与相关个性化&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;:warning: 为节省篇幅，本文章假设了我们已经导入所需库。另外spines在字典里的意思为脊椎，个人觉得翻译为坐标轴比较贴切。&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -245,11 +260,11 @@
     <link href="https://bingobounce.github.io/2019/07/25/import/"/>
     <id>https://bingobounce.github.io/2019/07/25/import/</id>
     <published>2019-07-25T10:03:52.000Z</published>
-    <updated>2019-08-02T10:30:32.895Z</updated>
+    <updated>2019-08-10T10:37:16.623Z</updated>
     
     <summary type="html">
     
-      关于import *的一些探讨
+      &lt;p&gt;关于import *的一些探讨&lt;/p&gt;
     
     </summary>
     

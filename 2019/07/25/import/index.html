@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="Ain&#39;t A Thing">
 <meta property="og:description" content="关于import *的一些探讨">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://bingobounce.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-02T10:30:32.895Z">
+<meta property="og:image" content="https://bingobounce.github.io/images/warning.jpeg">
+<meta property="og:updated_time" content="2019-08-10T10:37:16.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Star import is a bad idea!">
 <meta name="twitter:description" content="关于import *的一些探讨">
-<meta name="twitter:image" content="https://bingobounce.github.io/images/og_image.png">
+<meta name="twitter:image" content="https://bingobounce.github.io/images/warning.jpeg">
 
 
 
@@ -185,6 +185,12 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/images/warning.jpeg" alt="Star import is a bad idea!">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
@@ -196,7 +202,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-25T10:03:52.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-25</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-02T10:30:32.895Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-02</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-10T10:37:16.623Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-10</time>
                 
                 
                 <div class="level-item">
@@ -207,7 +213,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 977 个字)
+                    7 分钟 读完 (大约 986 个字)
                 </span>
                 
                 
@@ -225,7 +231,12 @@
             
         </h1>
         <div class="content">
-            <h2 id="Star-import-is-a-bad-idea"><a href="#Star-import-is-a-bad-idea" class="headerlink" title="Star import is a bad idea!?"></a>Star import is a bad idea!?</h2><p>Star import即<code>from &lt;module&gt; import *</code>,意味着我们可以访问<module>中所有我们想要访问的命名。</module></p>
+            <p>关于import *的一些探讨</p>
+<a id="more"></a>
+
+
+
+<h2 id="Star-import-is-a-bad-idea"><a href="#Star-import-is-a-bad-idea" class="headerlink" title="Star import is a bad idea!?"></a>Star import is a bad idea!?</h2><p>Star import即<code>from &lt;module&gt; import *</code>,意味着我们可以访问<module>中所有我们想要访问的命名。</module></p>
 <p>我们先定义如下脚本：</p>
 <figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># something.py</span></span><br><span class="line"></span><br><span class="line">public_variable = <span class="hljs-number">42</span></span><br><span class="line">_private_variable = <span class="hljs-number">141</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">public_function</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    print(<span class="hljs-string">"I'm a public function! yay!"</span>)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_private_function</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    print(<span class="hljs-string">"Ain't nobody accessing me from another module...usually"</span>)</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PublicClass</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">pass</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_WeirdClass</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">pass</span></span><br></pre></td></tr></table></figure>
 
@@ -347,7 +358,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
 <div class="card widget">
@@ -356,7 +367,7 @@
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Lucas">
+                        <img class="image is-128x128 has-mb-6" src="/images/giphy.gif" alt="Lucas">
                     
                     
                     <p class="is-size-4 is-block">
@@ -557,18 +568,6 @@
     </div>
 </div>
     
-        
-<!-- <div class="card widget"> -->
-<div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
-    </div>
-</div>
-
-    
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
@@ -602,7 +601,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -621,7 +620,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -640,7 +639,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -659,7 +658,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -797,6 +796,18 @@
     </div>
 </div>
         
+            
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
+        
         </div>
     
 </div>
@@ -838,7 +849,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -857,7 +868,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -876,7 +887,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -895,7 +906,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -1032,6 +1043,18 @@
         </div>
     </div>
 </div>
+    
+        
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
     
     
 </div>

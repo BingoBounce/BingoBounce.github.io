@@ -7,20 +7,20 @@
 
 
 
-    <meta name="description" content="Cython的基础学习">
+    <meta name="description" content="Cython的基础学习  封面： Photo by Patrick Hendry on Unsplash">
 <meta name="keywords" content="‘cython;加速计算&#39;&#39;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一记： 第2话">
 <meta property="og:url" content="https://bingobounce.github.io/2019/08/07/note-2/index.html">
 <meta property="og:site_name" content="Ain&#39;t A Thing">
-<meta property="og:description" content="Cython的基础学习">
+<meta property="og:description" content="Cython的基础学习  封面： Photo by Patrick Hendry on Unsplash">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://bingobounce.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-08T08:17:32.586Z">
+<meta property="og:image" content="https://bingobounce.github.io/images/day2.jpg">
+<meta property="og:updated_time" content="2019-08-10T10:40:08.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每日一记： 第2话">
-<meta name="twitter:description" content="Cython的基础学习">
-<meta name="twitter:image" content="https://bingobounce.github.io/images/og_image.png">
+<meta name="twitter:description" content="Cython的基础学习  封面： Photo by Patrick Hendry on Unsplash">
+<meta name="twitter:image" content="https://bingobounce.github.io/images/day2.jpg">
 
 
 
@@ -185,6 +185,12 @@
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
+        </span>
+    </div>
+    
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
@@ -196,7 +202,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-08-07T05:12:27.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-08-07</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-08T08:17:32.586Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-08</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-10T10:40:08.910Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-10</time>
                 
                 
                 <div class="level-item">
@@ -207,7 +213,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1414 个字)
+                    9 分钟 读完 (大约 1421 个字)
                 </span>
                 
                 
@@ -225,9 +231,12 @@
             
         </h1>
         <div class="content">
-            <blockquote>
+            <p>Cython的基础学习</p>
+<blockquote>
 <p>封面： Photo by <a href="https://unsplash.com/@worldsbetweenlines?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Patrick Hendry</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener">Unsplash</a></p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="第2话：加速吧，Cython！"><a href="#第2话：加速吧，Cython！" class="headerlink" title="第2话：加速吧，Cython！"></a>第2话：加速吧，Cython！</h2><h3 id="第一幕-Cython的优势"><a href="#第一幕-Cython的优势" class="headerlink" title="第一幕 Cython的优势"></a>第一幕 Cython的优势</h3><p>Cython 的本质可以总结如下：Cython 是包含 C 数据类型的 Python。几乎所有 Python 代码都是合法的 Cython 代码。 （存在一些限制，但是差不多也可以。） Cython 的编译器会转化 Python 代码为 C 代码，这些 C 代码均可以调用 Python/C 的 API。Cython 中的参数和变量还可以以 C 数据类型来声明。代码中的 Python 值和 C 的值可以自由地交叉混合（intermixed）使用, 所有的转化都是自动进行。并且全面支持 Python 的异常处理工具（facilities），包括 <code>try-except</code> 和 <code>try-finally</code>，即便在其中操作 C 数据都是可以的。</p>
 <hr>
 <h3 id="第二幕-入手Cython"><a href="#第二幕-入手Cython" class="headerlink" title="第二幕 入手Cython"></a>第二幕 入手Cython</h3><p>Cython可以接受几乎所有合法Python源文件，交叉混合使用Python/C。然而，C语言的编译非常重要，这也是开始的难点。</p>
@@ -370,7 +379,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
 <div class="card widget">
@@ -379,7 +388,7 @@
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Lucas">
+                        <img class="image is-128x128 has-mb-6" src="/images/giphy.gif" alt="Lucas">
                     
                     
                     <p class="is-size-4 is-block">
@@ -600,18 +609,6 @@
     </div>
 </div>
     
-        
-<!-- <div class="card widget"> -->
-<div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
-    </div>
-</div>
-
-    
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
@@ -645,7 +642,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -664,7 +661,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -683,7 +680,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -702,7 +699,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -840,6 +837,18 @@
     </div>
 </div>
         
+            
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
+        
         </div>
     
 </div>
@@ -881,7 +890,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -900,7 +909,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -919,7 +928,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -938,7 +947,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -1075,6 +1084,18 @@
         </div>
     </div>
 </div>
+    
+        
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
     
     
 </div>

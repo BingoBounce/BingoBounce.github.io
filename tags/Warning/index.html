@@ -187,6 +187,12 @@
 
     <div class="card">
     
+    <div class="card-image">
+        <a href="/2019/07/25/import/" class="image is-7by1">
+            <img class="thumbnail" src="/images/warning.jpeg" alt="Star import is a bad idea!">
+        </a>
+    </div>
+    
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
@@ -198,7 +204,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-25T10:03:52.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-07-25</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-02T10:30:32.895Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-02</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-10T10:37:16.623Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-10</time>
                 
                 
                 <div class="level-item">
@@ -209,7 +215,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 977 个字)
+                    7 分钟 读完 (大约 986 个字)
                 </span>
                 
                 
@@ -222,51 +228,27 @@
             
         </h1>
         <div class="content">
-            <h2 id="Star-import-is-a-bad-idea"><a href="#Star-import-is-a-bad-idea" class="headerlink" title="Star import is a bad idea!?"></a>Star import is a bad idea!?</h2><p>Star import即<code>from &lt;module&gt; import *</code>,意味着我们可以访问<module>中所有我们想要访问的命名。</module></p>
-<p>我们先定义如下脚本：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># something.py</span></span><br><span class="line"></span><br><span class="line">public_variable = <span class="hljs-number">42</span></span><br><span class="line">_private_variable = <span class="hljs-number">141</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">public_function</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    print(<span class="hljs-string">"I'm a public function! yay!"</span>)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_private_function</span><span class="hljs-params">()</span>:</span></span><br><span class="line">    print(<span class="hljs-string">"Ain't nobody accessing me from another module...usually"</span>)</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PublicClass</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">pass</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">_WeirdClass</span><span class="hljs-params">(object)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<p>然后我们在python解释器中执行<code>from something import *</code>，得到如下结果：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> something <span class="hljs-keyword">import</span> *</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>public_variable</span><br><span class="line"><span class="hljs-number">42</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>_private_variable</span><br><span class="line">...</span><br><span class="line">NameError: name <span class="hljs-string">'_private_variable'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>public_function()</span><br><span class="line"><span class="hljs-string">"I'm a public function! yay!"</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>_private_function()</span><br><span class="line">...</span><br><span class="line">NameError: name <span class="hljs-string">'_private_function'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c = PublicClass()</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c</span><br><span class="line">&lt;something.PublicClass object at ...&gt;</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c = _WeirdClass()</span><br><span class="line">...</span><br><span class="line">NameError: name <span class="hljs-string">'_WeirdClass'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-
-<p>可以发现调用<code>_private_variable</code>时，发生名称错误。</p>
-<p>这是因为<code>_private_variable</code>是以<code>_</code>开头的私有变量。如果想允许脚本能够访问模块中的私有变量，则需要在模块中使用<code>__all__</code>。</p>
-<blockquote>
-<p> <code>_all__</code>是一个字符串列表，它定义了模块(或包)中的哪些名称将在模块上使用<code>from &lt;module&gt; import *</code>时导出。</p>
-</blockquote>
-<p>当模块中没有使用<code>__all__</code>时，则在调用模块的脚本中可以调用除带有<code>_</code>开头的私有变量外的所有名称。</p>
-<p>于是我们再在<code>something.py</code>文件的顶部添加如下代码：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">__all__ = [<span class="hljs-string">'_private_variable'</span>, <span class="hljs-string">'PublicClass'</span>]</span><br></pre></td></tr></table></figure>
-
-<p>现在，我们只能从<code>from something import *</code>中调用<code>_private_variable</code>和<code>PublicClass</code>两个名称。如下：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> something <span class="hljs-keyword">import</span> *</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>public_variable</span><br><span class="line">...</span><br><span class="line">NameError: name <span class="hljs-string">'public_variable'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>_private_variable</span><br><span class="line"><span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>public_function()</span><br><span class="line">...</span><br><span class="line">NameError: name <span class="hljs-string">'public_function'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>_private_function()</span><br><span class="line">...</span><br><span class="line">NameError: name <span class="hljs-string">'_private_function'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c = PublicClass()</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c</span><br><span class="line">&lt;something.PublicClass object at ...&gt;</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>c = _WeirdClass()</span><br><span class="line">...</span><br><span class="line">NameError: name <span class="hljs-string">'_WeirdClass'</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> defined</span><br></pre></td></tr></table></figure>
-
-<p>以上是使用<code>from &lt;module&gt; import *</code>的情形。对于<code>from &lt;package&gt; import *</code>，<code>__all__</code>会处理在包内的模块，而除此之外，两者作用大致一样。因此，在我们使用<code>from &lt;package&gt; import *</code>时，<code>_all__</code>需要指定所有要加载并导入到当前命名空间的模块。</p>
-<blockquote>
-<p> ⚠️ 在一个包中的<code>__init__.py</code>文件中我们忽略声明<code>__all__</code>时，则<code>from &lt;package&gt; import *</code>将不会导入任何东西。</p>
-</blockquote>
-<hr>
-<p>python语言的简洁性是其一大特性。而python设计理念之一为：<em>Explicit is better than implicit</em>，即显式比隐式好。</p>
-<p><code>from &lt;module&gt; import *</code>不是显式的。它没有告诉我们要导入什么，或者要将什么名称引入命名空间。而显式地指定我们需要导入的内容会更好。这样，读者(很可能是你未来的自己)就不会混淆变量/函数/类/等等的位置。</p>
-<p>这就引出另一大特性：<em>Readability counts.</em>-代码可读性很重要。</p>
-<p>即使我们需要导入很多名称，只要显式地指定需要导入的内容，代码也会比star import的可读性高很多。例如使用PEP 328:</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> Tkinter <span class="hljs-keyword">import</span> (Tk, Frame, Button, Entry, Canvas, Text, </span><br><span class="line">        LEFT, DISABLED, NORMAL, RIDGE, END)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>此外，start import还有其他风险。</p>
-<p>例如当模块/或包的作者决定更改<code>__all__</code>列表的内容(添加/删除列表中的内容)时:</p>
-<ul>
-<li>作者从<code>__all__</code>中删除了一个字符串。如果我们的代码使用了这个名称，那么代码将会引发一个NameError，并且很难找出原因。(<strong>隐藏bug的具体可能性</strong>)</li>
-<li>作者<code>__all__</code>中添加了许多新名称字符串，然而我们可能不需要使用新名称，相当于<strong>我们在用不关心的东西填充名称空间，造成名称空间的污染</strong>。这些新名称甚至可能在我们没有意识到的情况下与其他函数或类的定义起冲突。</li>
-</ul>
-<p>当然，star import并不总是不好的，有时候也可以偷偷懒(●’◡’●)，这取决于我们是编写脚本还是编写需要重用的代码。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://medium.com/@s16h/importing-star-in-python-88fe9e8bd4d2" target="_blank" rel="noopener">Shahriar Tajbakhsh的博客：importing-star-in-python</a></li>
-</ol>
-
+            <p>关于import *的一些探讨</p>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Warning/">Warning</a>,&nbsp;<a class="has-link-grey -link" href="/tags/python/">python</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/07/25/import/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -287,7 +269,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
 <div class="card widget">
@@ -296,7 +278,7 @@
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Lucas">
+                        <img class="image is-128x128 has-mb-6" src="/images/giphy.gif" alt="Lucas">
                     
                     
                     <p class="is-size-4 is-block">
@@ -478,18 +460,6 @@
     </div>
 </div>
     
-        
-<!-- <div class="card widget"> -->
-<div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
-    </div>
-</div>
-
-    
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
@@ -523,7 +493,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -542,7 +512,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -561,7 +531,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -580,7 +550,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -718,6 +688,18 @@
     </div>
 </div>
         
+            
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
+        
         </div>
     
 </div>
@@ -759,7 +741,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -778,7 +760,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -797,7 +779,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -816,7 +798,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -953,6 +935,18 @@
         </div>
     </div>
 </div>
+    
+        
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
     
     
 </div>

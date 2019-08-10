@@ -187,6 +187,12 @@
 
     <div class="card">
     
+    <div class="card-image">
+        <a href="/2019/08/02/jupyter-ipywidgets/" class="image is-7by1">
+            <img class="thumbnail" src="/images/jupyter.png" alt="jupyter-ipywidgets使用手册">
+        </a>
+    </div>
+    
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
@@ -198,7 +204,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-08-02T09:40:05.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-08-02</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-04T04:54:50.488Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-04</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-08-10T10:37:44.571Z"><i class="far fa-calendar-check">&nbsp;</i>2019-08-10</time>
                 
                 
                 <div class="level-item">
@@ -209,7 +215,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    26 分钟 读完 (大约 3974 个字)
+                    27 分钟 读完 (大约 3984 个字)
                 </span>
                 
                 
@@ -222,247 +228,27 @@
             
         </h1>
         <div class="content">
-            <blockquote>
-<p>封面来源:<a href="https://towardsdatascience.com/lessons-from-a-real-machine-learning-project-part-1-from-jupyter-to-luigi-bdfd0b050ca5" target="_blank" rel="noopener">Medium: Emanuele Fabbiani</a></p>
-</blockquote>
-<p>先导入模块：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> ipywidgets <span class="hljs-keyword">as</span> widgets</span><br></pre></td></tr></table></figure>
-
-<h2 id="部件集合"><a href="#部件集合" class="headerlink" title="部件集合"></a>部件集合</h2><h3 id="1-1-数值部件"><a href="#1-1-数值部件" class="headerlink" title="1.1 数值部件"></a>1.1 数值部件</h3><p>数值部件被设计用来显示数值。可以显示整数和浮点数，包括有界的和无界的。大部分数值小部件的参数设置都类似，例如整数滑动条(IntSlider)和浮点数滑动条(FloatSlider)，它们只是名称不同，其功能与参数大致相同。</p>
-<h4 id="1-1-1-整数滑动条-浮点数滑动条"><a href="#1-1-1-整数滑动条-浮点数滑动条" class="headerlink" title="1.1.1 整数滑动条/浮点数滑动条"></a>1.1.1 整数滑动条/浮点数滑动条</h4><p>现在来实现一个整数滑动条：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.IntSlider(</span><br><span class="line">    value=<span class="hljs-number">7</span>,	<span class="hljs-comment"># 设定初始状态，滑动条的值</span></span><br><span class="line">    min=<span class="hljs-number">0</span>,	<span class="hljs-comment"># 设定滑动条最小滑动值</span></span><br><span class="line">    max=<span class="hljs-number">10</span>,	<span class="hljs-comment"># 设定滑动条最大滑动值</span></span><br><span class="line">    step=<span class="hljs-number">1</span>,	<span class="hljs-comment"># 每次移动，改变的步数</span></span><br><span class="line">    description=<span class="hljs-string">'Test:'</span>,	<span class="hljs-comment"># 滑动条的名称，若设置中文，则需要使用unicode编码,例如 u'中国'</span></span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,	<span class="hljs-comment"># 当设置为True时，禁止改变滑动条数值</span></span><br><span class="line">    continuous_update=<span class="hljs-literal">False</span>, </span><br><span class="line">    orientation=<span class="hljs-string">'horizontal'</span>,	<span class="hljs-comment"># 设置滑动条的方向：horizontal水平，vertical垂直,默认horizontal</span></span><br><span class="line">    readout=<span class="hljs-literal">True</span>,	<span class="hljs-comment"># 是否显示滑动条当前数值，默认True</span></span><br><span class="line">    readout_format=<span class="hljs-string">'d'</span>	<span class="hljs-comment"># 滑动条数值显示格式：d-整数</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>continuous_update</code>的作用: 个人认为作用为是否设置连续更新值，设置为True时，每次修改滑动条数值，都会刷新当前值，并且使得编译器重新编译。而设置为False,则无需重新编译，相当于已经缓存所有滑动条数值。一般设置为False。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190802155836.png" alt></p>
-<p>浮点数滑动条与整数滑动条的设置几乎一样，只需改动数值显示格式和使用的方法即可：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.FloatSlider(</span><br><span class="line">    value=<span class="hljs-number">7.0</span>,</span><br><span class="line">    min=<span class="hljs-number">0</span>,</span><br><span class="line">    max=<span class="hljs-number">10.0</span>,</span><br><span class="line">    step=<span class="hljs-number">0.1</span>,</span><br><span class="line">    description=<span class="hljs-string">'Test:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">    continuous_update=<span class="hljs-literal">False</span>,</span><br><span class="line">    orientation=<span class="hljs-string">'horizontal'</span>,</span><br><span class="line">    readout=<span class="hljs-literal">True</span>,</span><br><span class="line">    readout_format=<span class="hljs-string">'.1f'</span>, <span class="hljs-comment"># 设置显示的格式为显示一位小数的浮点数</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="1-1-2-浮点指数滑动条"><a href="#1-1-2-浮点指数滑动条" class="headerlink" title="1.1.2 浮点指数滑动条"></a>1.1.2 浮点指数滑动条</h4><p>我们知道指数函数的增长速度是很快的，使用指数函数可以表达很大区间长度的滑动条。</p>
-<p>设置格式如下：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.FloatLogSlider(</span><br><span class="line">    value=<span class="hljs-number">10</span>,	</span><br><span class="line">    base=<span class="hljs-number">10</span>,	<span class="hljs-comment"># 指数函数的底数</span></span><br><span class="line">    min=<span class="hljs-number">-10</span>, <span class="hljs-comment"># 指数函数的幂数最小值</span></span><br><span class="line">    max=<span class="hljs-number">10</span>, <span class="hljs-comment"># 指数函数的幂数最大值</span></span><br><span class="line">    step=<span class="hljs-number">0.2</span>, <span class="hljs-comment"># 幂数改变的步长</span></span><br><span class="line">    description=<span class="hljs-string">'Log Slider'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="1-1-3-整数-浮点数区间型滑动条"><a href="#1-1-3-整数-浮点数区间型滑动条" class="headerlink" title="1.1.3 整数/浮点数区间型滑动条"></a>1.1.3 整数/浮点数区间型滑动条</h4><p>IntRangeSlider/FloatRangeSlider可以显示一个区间值对应的滑动条，可以调节区间的大小：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.IntRangeSlider(</span><br><span class="line">    value=[<span class="hljs-number">5</span>, <span class="hljs-number">7</span>], <span class="hljs-comment"># 使用列表的格式设置区间值</span></span><br><span class="line">    min=<span class="hljs-number">0</span>,</span><br><span class="line">    max=<span class="hljs-number">10</span>,</span><br><span class="line">    step=<span class="hljs-number">1</span>,</span><br><span class="line">    description=<span class="hljs-string">'Test:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">    continuous_update=<span class="hljs-literal">False</span>,</span><br><span class="line">    orientation=<span class="hljs-string">'horizontal'</span>,</span><br><span class="line">    readout=<span class="hljs-literal">True</span>,</span><br><span class="line">    readout_format=<span class="hljs-string">'d'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>对于浮点型，设置与整数型区间滑动条类似，可以参考浮点数滑动条。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190802155726.png" alt></p>
-<hr>
-<h4 id="1-1-4-整数型进度条-浮点型进度条"><a href="#1-1-4-整数型进度条-浮点型进度条" class="headerlink" title="1.1.4 整数型进度条/浮点型进度条"></a>1.1.4 整数型进度条/浮点型进度条</h4><p>IntProgress/FloatProgress可以展示进度条效果(静态效果)：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.IntProgress(	<span class="hljs-comment"># 浮动型只需改为：widgets.FloatProgress</span></span><br><span class="line">    value=<span class="hljs-number">7</span>,</span><br><span class="line">    min=<span class="hljs-number">0</span>,</span><br><span class="line">    max=<span class="hljs-number">10</span>,</span><br><span class="line">    step=<span class="hljs-number">1</span>,</span><br><span class="line">    description=<span class="hljs-string">'Loading:'</span>,</span><br><span class="line">    bar_style=<span class="hljs-string">''</span>, <span class="hljs-comment"># 'success', 'info', 'warning', 'danger' or ''</span></span><br><span class="line">    orientation=<span class="hljs-string">'horizontal'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>在<kbd>bar_style</kbd>参数中,<code>&#39;success&#39;, &#39;info&#39;, &#39;warning&#39;, &#39;danger&#39; or &#39;&#39;</code>代表着进度条显示的不同颜色。</p>
-<hr>
-<h4 id="1-1-5-有界整数-浮点型数值输入框"><a href="#1-1-5-有界整数-浮点型数值输入框" class="headerlink" title="1.1.5 有界整数/浮点型数值输入框"></a>1.1.5 有界整数/浮点型数值输入框</h4><p>当需要设置输入型的数值框时，可以使用数值的<code>Text</code>部件：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># widgets.BoundedFloatText</span></span><br><span class="line">widgets.BoundedIntText( 	</span><br><span class="line">    value=<span class="hljs-number">7</span>,</span><br><span class="line">    min=<span class="hljs-number">0</span>,</span><br><span class="line">    max=<span class="hljs-number">10</span>,</span><br><span class="line">    step=<span class="hljs-number">1</span>,</span><br><span class="line">    description=<span class="hljs-string">'Text:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190802161038.png" alt></p>
-<p><code>BoundedIntText</code>和<code>BoundedFloatText</code>输入框只能输入有界数值，如果想要输入任意数值，则可用使用<code>IntText</code>/<code>FloatText</code>:</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># widgets.FloatText</span></span><br><span class="line">widgets.IntText(</span><br><span class="line">    value=<span class="hljs-number">7</span>,</span><br><span class="line">    description=<span class="hljs-string">'Any:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="1-2-布尔控件"><a href="#1-2-布尔控件" class="headerlink" title="1.2 布尔控件"></a>1.2 布尔控件</h3><p>布尔控件可以用于展示布尔类型的部件，例如未点击/已点击等。</p>
-<h4 id="1-2-1-开关按钮"><a href="#1-2-1-开关按钮" class="headerlink" title="1.2.1 开关按钮"></a>1.2.1 开关按钮</h4><p>开关按钮(ToggleButton)可以设计类似灯光开关的效果，点击一次打开，再次点击则关闭：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.ToggleButton(</span><br><span class="line">    value=<span class="hljs-literal">False</span>, <span class="hljs-comment"># 设置初始状态，False代表开关关闭，即未点击状态</span></span><br><span class="line">    description=<span class="hljs-string">'Click me'</span>, <span class="hljs-comment"># 开关的描述</span></span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">    button_style=<span class="hljs-string">''</span>, <span class="hljs-comment"># 'success', 'info', 'warning', 'danger' or ''</span></span><br><span class="line">    tooltip=<span class="hljs-string">'Description'</span>,	<span class="hljs-comment"># 切换按钮的提示说明,在鼠标悬停在上时显示</span></span><br><span class="line">    icon=<span class="hljs-string">'check'</span> <span class="hljs-comment"># font-awesome的图标名称，显示在文字描述前</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/1564734471731.png" alt></p>
-<hr>
-<h4 id="1-2-2-复选框"><a href="#1-2-2-复选框" class="headerlink" title="1.2.2 复选框"></a>1.2.2 复选框</h4><p>使用<code>widgets.Checkbox</code>方法可以制造复选框(checkbox)效果：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.Checkbox(</span><br><span class="line">    value=<span class="hljs-literal">False</span>,</span><br><span class="line">    description=<span class="hljs-string">'Check me'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>1.2.3 有效值valid</p>
-<p>valid部件提供只读指示器：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.Valid(</span><br><span class="line">    value=<span class="hljs-literal">False</span>, <span class="hljs-comment"># False代表当前值非法，True则合法</span></span><br><span class="line">    description=<span class="hljs-string">'Valid!'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190802163451.png" alt></p>
-<hr>
-<h3 id="1-3-选择部件"><a href="#1-3-选择部件" class="headerlink" title="1.3 选择部件"></a>1.3 选择部件</h3><p>选择部件可用于显示单个选择列表，也可用于选择多个值。我们可以通过传递列表来枚举可选选项。</p>
-<h4 id="1-3-1-下拉框"><a href="#1-3-1-下拉框" class="headerlink" title="1.3.1 下拉框"></a>1.3.1 下拉框</h4><p>下拉框(Dropdown)设置如下：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.Dropdown(</span><br><span class="line">    options=[<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>, <span class="hljs-string">'3'</span>], </span><br><span class="line">    value=<span class="hljs-string">'2'</span>, <span class="hljs-comment"># 默认值</span></span><br><span class="line">    description=<span class="hljs-string">'Number:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><kbd>options</kbd>可以简单设置字符串,如<code>[&#39;Galileo&#39;, &#39;Brahe&#39;, &#39;Hubble&#39;]</code>,或可用设置数字：<code>[0,1,2]</code>。</p>
-<p>还可以设置键值对：<code>[(&#39;Galileo&#39;, 0), (&#39;Brahe&#39;, 1), (&#39;Hubble&#39;, 2)]</code>，此时我们只需设置<kbd>value</kbd>就能选择其对应的字符串。</p>
-</blockquote>
-<hr>
-<h4 id="1-3-2-单选框"><a href="#1-3-2-单选框" class="headerlink" title="1.3.2 单选框"></a>1.3.2 单选框</h4><p>RadioButtons效果的设置也很简洁：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.RadioButtons(</span><br><span class="line">    options=[<span class="hljs-string">'pepperoni'</span>, <span class="hljs-string">'pineapple'</span>, <span class="hljs-string">'anchovies'</span>],</span><br><span class="line">	value=<span class="hljs-string">'pineapple'</span>,</span><br><span class="line">    description=<span class="hljs-string">'Pizza topping:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>RadioButtons也可以设置字符串、数字和键值对。</p>
-</blockquote>
-<hr>
-<h4 id="1-3-3-选择框"><a href="#1-3-3-选择框" class="headerlink" title="1.3.3 选择框"></a>1.3.3 选择框</h4><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.Select(</span><br><span class="line">    options=[<span class="hljs-string">'Linux'</span>, <span class="hljs-string">'Windows'</span>, <span class="hljs-string">'OSX'</span>],</span><br><span class="line">    value=<span class="hljs-string">'OSX'</span>, </span><br><span class="line">	rows=<span class="hljs-number">3</span>, <span class="hljs-comment"># 可选，设置选择的行数。默认行数为options列表中选项个数</span></span><br><span class="line">    description=<span class="hljs-string">'OS:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><kbd>value</kbd>参数可以使用<kbd>index</kbd>参数来代替，该参数可以设置默认值在<kbd>option</kbd>参数列表中的索引值。</p>
-<p>当<kbd>option</kbd>设置是键值对格式时，<kbd>value</kbd>参数也可以使用<kbd>label</kbd>代替，设置为标签名，效果也一样。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190802171030.png" alt></p>
-<hr>
-<h4 id="1-3-4-选择滑条"><a href="#1-3-4-选择滑条" class="headerlink" title="1.3.4 选择滑条"></a>1.3.4 选择滑条</h4><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.SelectionSlider(</span><br><span class="line">    options=[<span class="hljs-string">'scrambled'</span>, <span class="hljs-string">'sunny side up'</span>, <span class="hljs-string">'poached'</span>, <span class="hljs-string">'over easy'</span>],</span><br><span class="line">    value=<span class="hljs-string">'sunny side up'</span>,</span><br><span class="line">    description=<span class="hljs-string">'I like my eggs ...'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">    continuous_update=<span class="hljs-literal">False</span>,</span><br><span class="line">    orientation=<span class="hljs-string">'horizontal'</span>,</span><br><span class="line">    readout=<span class="hljs-literal">True</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>选择滑动条也可以使用<kbd>index</kbd>和<kbd>label</kbd>参数代替<kbd>value</kbd>。</p>
-</blockquote>
-<hr>
-<p>1.3.5 区间型选择滑条</p>
-<p>SelectionRangeSlider的值、索引和标签键是所选最小值和最大值的2元组。选项必须是非空的。</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> datetime </span><br><span class="line"><span class="hljs-comment"># 使用datetime模块格式化时间</span></span><br><span class="line">dates = [datetime.date(<span class="hljs-number">2015</span>,i,<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,<span class="hljs-number">13</span>)]</span><br><span class="line">options = [(i.strftime(<span class="hljs-string">'%b'</span>), i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> dates] <span class="hljs-comment"># %b将日期格式化为 月份，如2015-3-1-&gt;Mar</span></span><br><span class="line">widgets.SelectionRangeSlider(</span><br><span class="line">    options=options,</span><br><span class="line">    index=(<span class="hljs-number">0</span>,<span class="hljs-number">11</span>), <span class="hljs-comment"># 选择一月到十二月，元组参数</span></span><br><span class="line">    description=<span class="hljs-string">'Months (2015)'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><kbd>index</kbd>参数可以用<kbd>label</kbd>代替，这里<code>index=(0,11)</code>可以替换为<code>label=(&#39;Jan&#39;, &#39;Dec&#39;)</code>。</p>
-</blockquote>
-<hr>
-<h4 id="1-3-6-开关按钮-多个"><a href="#1-3-6-开关按钮-多个" class="headerlink" title="1.3.6 开关按钮(多个)"></a>1.3.6 开关按钮(多个)</h4><p>选择部件中的<kbd>ToggleButtons</kbd>与布尔控件中的<kbd>ToggleButton</kbd>参数设置大致相同：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.ToggleButtons(</span><br><span class="line">    options=[<span class="hljs-string">'Slow'</span>, <span class="hljs-string">'Regular'</span>, <span class="hljs-string">'Fast'</span>],</span><br><span class="line">    description=<span class="hljs-string">'Speed:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">    button_style=<span class="hljs-string">''</span>, <span class="hljs-comment"># 'success', 'info', 'warning', 'danger' or ''</span></span><br><span class="line">    tooltips=[<span class="hljs-string">'Description of slow'</span>, <span class="hljs-string">'Description of regular'</span>, <span class="hljs-string">'Description of fast'</span>],</span><br><span class="line"><span class="hljs-comment">#     icons=['check'] * 3</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="1-3-7-多选框"><a href="#1-3-7-多选框" class="headerlink" title="1.3.7 多选框"></a>1.3.7 多选框</h4><p>多选部件可以使用<kbd>shift</kbd>和<kbd>ctrl</kbd>(或命令)以及鼠标单击或箭头键选择多个值。</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.SelectMultiple(</span><br><span class="line">    options=[<span class="hljs-string">'Apples'</span>, <span class="hljs-string">'Oranges'</span>, <span class="hljs-string">'Pears'</span>],</span><br><span class="line">    value=[<span class="hljs-string">'Oranges'</span>],</span><br><span class="line">    <span class="hljs-comment">#rows=10,</span></span><br><span class="line">    description=<span class="hljs-string">'Fruits'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="1-4-字符部件"><a href="#1-4-字符部件" class="headerlink" title="1.4 字符部件"></a>1.4 字符部件</h3><p>字符部件有接受字符，也有接受HTML和数学公式的小部件</p>
-<h4 id="1-4-1-字符输入框"><a href="#1-4-1-字符输入框" class="headerlink" title="1.4.1 字符输入框"></a>1.4.1 字符输入框</h4><p>单行输入框:<code>Text</code></p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.Text(</span><br><span class="line">    value=<span class="hljs-string">'Hello World'</span>,</span><br><span class="line">    placeholder=<span class="hljs-string">'Type something'</span>,	<span class="hljs-comment"># 输入框占位符</span></span><br><span class="line">    description=<span class="hljs-string">'String:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>多行输入框：<code>Textarea</code></p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.Textarea(</span><br><span class="line">    value=<span class="hljs-string">'Hello World'</span>,</span><br><span class="line">    placeholder=<span class="hljs-string">'Type something'</span>,</span><br><span class="line">    description=<span class="hljs-string">'String:'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="1-4-2-HBox"><a href="#1-4-2-HBox" class="headerlink" title="1.4.2 HBox"></a>1.4.2 HBox</h4><p>当我们想要构建<strong>多个部件</strong>的组合效果时，可以使用Hbox部件。</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># value内嵌数学公式可用使用$$标识</span></span><br><span class="line"><span class="hljs-comment"># widgets.Label()可用定义一个描述文字</span></span><br><span class="line">widgets.HBox([widgets.Label(value=<span class="hljs-string">"The $m$ in $E=mc^2$:"</span>), widgets.FloatSlider(),widgets.IntText(value=<span class="hljs-number">10</span>)])</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803075505.png" alt></p>
-<hr>
-<h4 id="1-4-3-HTML部件"><a href="#1-4-3-HTML部件" class="headerlink" title="1.4.3 HTML部件"></a>1.4.3 HTML部件</h4><p>在cell中嵌入HTML代码：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.HTML(</span><br><span class="line">    value=<span class="hljs-string">"Hello &lt;b&gt;World&lt;/b&gt;"</span>,</span><br><span class="line">    placeholder=<span class="hljs-string">'Some HTML'</span>,</span><br><span class="line">    description=<span class="hljs-string">'Some HTML'</span>, <span class="hljs-comment"># HTML代码前的描述文字</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803075654.png" alt></p>
-<hr>
-<h4 id="1-4-4-HTML-Math部件"><a href="#1-4-4-HTML-Math部件" class="headerlink" title="1.4.4 HTML Math部件"></a>1.4.4 HTML Math部件</h4><p>HTML Math部件可以同时显示HTML代码和数学公式、符号：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.HTMLMath(</span><br><span class="line">    value=<span class="hljs-string">r"Some math and &lt;i&gt;HTML&lt;/i&gt;: $x^2$ and $$\frac&#123;x+1&#125;&#123;x-1&#125;$$"</span>,	<span class="hljs-comment"># 这里使用原始字符串</span></span><br><span class="line">    placeholder=<span class="hljs-string">'Some HTML'</span>,</span><br><span class="line">    description=<span class="hljs-string">'Some HTML'</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803075925.png" alt></p>
-<hr>
-<h3 id="2-1-图像部件"><a href="#2-1-图像部件" class="headerlink" title="2.1 图像部件"></a>2.1 图像部件</h3><p><kbd>Image</kbd>部件可用结合python文件读取命令来显示图像：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">file = open(<span class="hljs-string">"Deeplearning/sheep.jpg"</span>, <span class="hljs-string">"rb"</span>)	<span class="hljs-comment"># rb：以二进制方式读取</span></span><br><span class="line">image = file.read()</span><br><span class="line">widgets.Image(</span><br><span class="line">    value=image,	<span class="hljs-comment"># 接受一个字节字符串,是想要浏览器显示的原始图像数据。</span></span><br><span class="line">    format=<span class="hljs-string">'jpg'</span>,	<span class="hljs-comment"># 显式地选择打开图像的格式，默认为'png'</span></span><br><span class="line">    width=<span class="hljs-number">300</span>,</span><br><span class="line">    height=<span class="hljs-number">400</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803081000.png" alt></p>
-<hr>
-<h3 id="2-2-按钮"><a href="#2-2-按钮" class="headerlink" title="2.2 按钮"></a>2.2 按钮</h3><blockquote>
-<p><kbd>Button</kbd>部件与<kbd>ToggleButton</kbd>部件的显示效果差不多，不过，当<kbd>Button</kbd>==<strong>点击时</strong>==，颜色会变深,而当<strong>点击<kbd>ToggleButton</kbd>==后==</strong>，颜色保持改变。</p>
-</blockquote>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">button = widgets.Button(</span><br><span class="line">    description=<span class="hljs-string">'Click me'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">    button_style=<span class="hljs-string">'success'</span>, <span class="hljs-comment"># 'success', 'info', 'warning', 'danger' or ''</span></span><br><span class="line">    tooltip=<span class="hljs-string">'Click'</span>,</span><br><span class="line">    icon=<span class="hljs-string">'check'</span></span><br><span class="line">)</span><br><span class="line">toggleButton = widgets.ToggleButton(</span><br><span class="line">    value=<span class="hljs-literal">False</span>,</span><br><span class="line">    description=<span class="hljs-string">'Click me'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span>,</span><br><span class="line">    button_style=<span class="hljs-string">'success'</span>,</span><br><span class="line">    tooltip=<span class="hljs-string">'Click'</span>,</span><br><span class="line">    icon=<span class="hljs-string">'check'</span></span><br><span class="line">)</span><br><span class="line">button</span><br><span class="line">toggleButton</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803082751.png" alt></p>
-<hr>
-<h3 id="2-3-播放-动画-部件"><a href="#2-3-播放-动画-部件" class="headerlink" title="2.3 播放(动画)部件"></a>2.3 播放(动画)部件</h3><p>Play小部件通过以一定的速度迭代<strong>整数</strong>序列来执行动画。下面滑块的值链接到播放器:</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">play = widgets.Play(</span><br><span class="line"><span class="hljs-comment">#     interval=10,	时间间隔，用来设置播放速度，默认10s</span></span><br><span class="line">    value=<span class="hljs-number">50</span>,</span><br><span class="line">    min=<span class="hljs-number">0</span>,	<span class="hljs-comment"># 设置范围</span></span><br><span class="line">    max=<span class="hljs-number">100</span>,</span><br><span class="line">    step=<span class="hljs-number">1</span>,	<span class="hljs-comment"># 每次动画移动步长</span></span><br><span class="line">    description=<span class="hljs-string">"Press play"</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br><span class="line">slider = widgets.IntSlider()</span><br><span class="line">widgets.jslink((play, <span class="hljs-string">'value'</span>), (slider, <span class="hljs-string">'value'</span>))	<span class="hljs-comment"># 前端链接两个小部件的属性，使它们保持同步</span></span><br><span class="line">widgets.HBox([play, slider])</span><br></pre></td></tr></table></figure>
-
-<p>这里解释一下<code>widgets.jslink</code>部件的用法：</p>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">Parameters</span><br><span class="line">----------</span><br><span class="line">source : a (Widget, &apos;trait_name&apos;) tuple for the first trait</span><br><span class="line">target : a (Widget, &apos;trait_name&apos;) tuple for the second trait</span><br><span class="line">(指定target的某一属性的与source的同步)</span><br><span class="line"></span><br><span class="line">Examples</span><br><span class="line">--------</span><br><span class="line">&gt;&gt;&gt; c = link((widget1, &apos;value&apos;), (widget2, &apos;value&apos;))</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803084322.png" alt></p>
-<hr>
-<h3 id="2-4-日期选择器"><a href="#2-4-日期选择器" class="headerlink" title="2.4 日期选择器"></a>2.4 日期选择器</h3><p><kbd>DatePicker</kbd>部件可以在Chrome、Firefox和IE Edge中工作，但目前不能在Safari中工作，因为它不支持HTML日期输入字段。</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.DatePicker(</span><br><span class="line">    description=<span class="hljs-string">'Pick a Date'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803085910.png" alt></p>
-<hr>
-<h3 id="2-5-颜色选择器"><a href="#2-5-颜色选择器" class="headerlink" title="2.5 颜色选择器"></a>2.5 颜色选择器</h3><p><kbd>ColorPicker</kbd>部件可以选择颜色，并且颜色名称或颜色代码：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.ColorPicker(</span><br><span class="line">    concise=<span class="hljs-literal">False</span>,	<span class="hljs-comment"># 设置是否隐藏颜色名称或颜色代码</span></span><br><span class="line">    description=<span class="hljs-string">'Pick a color'</span>,</span><br><span class="line">    value=<span class="hljs-string">'blue'</span>,</span><br><span class="line">    disabled=<span class="hljs-literal">False</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190803090404.png" alt></p>
-<hr>
-<h3 id="2-6-文件上传"><a href="#2-6-文件上传" class="headerlink" title="2.6 文件上传"></a>2.6 文件上传</h3><p><kbd>FileUpload</kbd>部件可用以字节的形式上载任何类型的文件：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">widgets.FileUpload(</span><br><span class="line">    accept=<span class="hljs-string">''</span>,  <span class="hljs-comment"># 选择接受的文件类型 e.g. '.txt', '.pdf', 'image/*', 'image/*,.pdf'</span></span><br><span class="line">    multiple=<span class="hljs-literal">False</span>  <span class="hljs-comment"># 设置为True，可以接受多个文件上载</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="3-1-容器-布局部件"><a href="#3-1-容器-布局部件" class="headerlink" title="3.1 容器/布局部件"></a>3.1 容器/布局部件</h3><p>这类部件可用用来存储其他称为<kbd>children</kbd>的小部件。每一个容器部件在被创建时或之后，都会有被设置一个<kbd>children</kbd>属性。</p>
-<h4 id="3-1-1-Box"><a href="#3-1-1-Box" class="headerlink" title="3.1.1 Box"></a>3.1.1 Box</h4><figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">items = [widgets.Label(str(i)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>)]</span><br><span class="line">widgets.Box(items)</span><br></pre></td></tr></table></figure>
-
-<p><kbd>HBox</kbd> 全称 Horizontal Box，其中所有子项都是自动按顺序<strong>横排</strong>。<kbd>VBox</kbd> 则相反，全称 Vertical Box，里面为<strong>竖排</strong>方式。如果既然要水平方向和垂直方向两个方向填充内容，我们可以相互内嵌布局，即水平布局内嵌垂直布局，或垂直布局内嵌水平布局。[^1]。</p>
-<blockquote>
-<p>[^1]: <a href="https://blog.csdn.net/zhangxin09/article/details/5631640" target="_blank" rel="noopener">CSDN: sp42a 箱子布局攻略 (HBox/VBox Layout)</a></p>
-</blockquote>
-<p>3.1.2 HBox</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">items = [widgets.Label(str(i)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>)]</span><br><span class="line">widgets.HBox(items)</span><br></pre></td></tr></table></figure>
-
-<p>3.1.3 VBox</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">items = [widgets.Label(str(i)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>)]</span><br><span class="line">left_box = widgets.VBox([items[<span class="hljs-number">0</span>], items[<span class="hljs-number">1</span>]])</span><br><span class="line">right_box = widgets.VBox([items[<span class="hljs-number">2</span>], items[<span class="hljs-number">3</span>]])</span><br><span class="line">widgets.HBox([left_box, right_box])</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="3-1-4-栅格箱GridBox"><a href="#3-1-4-栅格箱GridBox" class="headerlink" title="3.1.4  栅格箱GridBox"></a>3.1.4  栅格箱GridBox</h4><p>此框使用HTML网格规范在<strong>二维网格</strong>中布局其子元素。</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 示例在3列中列出了其中的8个数字，以及设置容纳这些数字所需的行数。</span></span><br><span class="line">items = [widgets.Label(str(i)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">8</span>)]</span><br><span class="line">widgets.GridBox(items, layout=widgets.Layout(grid_template_columns=<span class="hljs-string">"repeat(3, 100px)"</span>))	<span class="hljs-comment"># 100px代表是每列元素的横向间隔</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="3-1-5-折叠格"><a href="#3-1-5-折叠格" class="headerlink" title="3.1.5 折叠格"></a>3.1.5 折叠格</h4><p><kbd>Accordion</kbd>部件可设置折叠效果</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">accordion = widgets.Accordion(children=[widgets.IntSlider(), widgets.Text()]) <span class="hljs-comment"># 设置children部件</span></span><br><span class="line">accordion.set_title(<span class="hljs-number">0</span>, <span class="hljs-string">'Slider'</span>) <span class="hljs-comment"># 折叠格的名称</span></span><br><span class="line">accordion.set_title(<span class="hljs-number">1</span>, <span class="hljs-string">'Text'</span>)</span><br><span class="line">accordion</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190804104229.png" alt></p>
-<hr>
-<h4 id="3-1-6-选项卡"><a href="#3-1-6-选项卡" class="headerlink" title="3.1.6 选项卡"></a>3.1.6 选项卡</h4><p><kbd>Tab</kbd>部件的<kbd>children</kbd>是在选项卡创建后，添加的属性。每一个选项的标题设置与<kbd>Accordion</kbd>相同：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">tab_contents = [<span class="hljs-string">'P0'</span>, <span class="hljs-string">'P1'</span>, <span class="hljs-string">'P2'</span>, <span class="hljs-string">'P3'</span>, <span class="hljs-string">'P4'</span>]	<span class="hljs-comment"># 标题</span></span><br><span class="line">children = [widgets.Text(description=name) <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> tab_contents]</span><br><span class="line">tab = widgets.Tab()	<span class="hljs-comment"># 先创建Tab部件</span></span><br><span class="line">tab.children = children	<span class="hljs-comment"># 创建部件后，再添加children属性</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(children)):</span><br><span class="line">    tab.set_title(i, str(i))</span><br><span class="line">tab</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190804104555.png" alt></p>
-<hr>
-<p><kbd>Tab</kbd>和<kbd>Accordion</kbd>部件在选择不同选项或者折叠格时，它们会自动更新<code>selected_index</code>属性，即选项对应的索引。<strong>这与之前选择部件都不同</strong>。</p>
-<blockquote>
-<p>这意味着我们既可以查看用户正在做什么，也可以通过设置<code>selected_index</code>的值以编程方式设置用户看到的内容。</p>
-</blockquote>
-<p>当设置<code>selected_index = None</code>关闭所有折叠格或取消选择所有选项卡。例如我们设置取消选择所有选项卡，则选项卡内部件会消失：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">tab..selected_index = <span class="hljs-literal">None</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190804105413.png" alt></p>
-<hr>
-<h4 id="3-1-7-嵌套选项卡和折叠格"><a href="#3-1-7-嵌套选项卡和折叠格" class="headerlink" title="3.1.7 嵌套选项卡和折叠格"></a>3.1.7 嵌套选项卡和折叠格</h4><p>选项卡和折叠格可以嵌套到任意深度。下面举一例：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">tab_nest = widgets.Tab()</span><br><span class="line">accordion = widgets.Accordion(children=[widgets.IntSlider(), widgets.Text()]) <span class="hljs-comment"># 设置children部件</span></span><br><span class="line">accordion.set_title(<span class="hljs-number">0</span>, <span class="hljs-string">'Slider'</span>) <span class="hljs-comment"># 折叠格的名称</span></span><br><span class="line">accordion.set_title(<span class="hljs-number">1</span>, <span class="hljs-string">'Text'</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 开始嵌套</span></span><br><span class="line">tab_nest.children = [accordion, accordion]</span><br><span class="line">tab_nest.set_title(<span class="hljs-number">0</span>, <span class="hljs-string">'An accordion'</span>)	<span class="hljs-comment"># 设置选项卡标题</span></span><br><span class="line">tab_nest.set_title(<span class="hljs-number">1</span>, <span class="hljs-string">'Copy of the accordion'</span>)</span><br><span class="line">tab_nest</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190804105712.png" alt></p>
-<hr>
-<h3 id="printer-Output部件"><a href="#printer-Output部件" class="headerlink" title=":printer: Output部件"></a>:printer: Output部件</h3><h4 id="更加人性化的输出显示-IPython"><a href="#更加人性化的输出显示-IPython" class="headerlink" title="更加人性化的输出显示: IPython"></a>更加人性化的输出显示: IPython</h4><p>在IPython 5.4和6.1自动向用户提供<code>display()</code>，而不需要导入。如果在纯python上下文中或旧版本的IPython中使用display，请在文件顶部使用以下导入:</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> IPython.display <span class="hljs-keyword">import</span> display</span><br></pre></td></tr></table></figure>
-
-<p>Output部件可以捕获和显示由IPython生成的stdout、stderr和Rich output。我们还可以直接将输出追加到输出部件，或者通过编程清除它。</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 设置一个Output对象</span></span><br><span class="line">out = widgets.Output(layout=&#123;<span class="hljs-string">'border'</span>: <span class="hljs-string">'1px solid yellow'</span>&#125;)	<span class="hljs-comment"># 定制布局：增加输出外框</span></span><br></pre></td></tr></table></figure>
-
-<p>Rich output可以被定向到输出区域。在Jupyter中能够很好展示的输出都能在<kbd>Output</kbd>部件中很好展示：</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> IPython.display <span class="hljs-keyword">import</span> YouTubeVideo</span><br><span class="line">out = widgets.Output(layout=&#123;<span class="hljs-string">'border'</span>: <span class="hljs-string">'1px solid yellow'</span>&#125;)</span><br><span class="line"><span class="hljs-comment"># 使用 with out 来保持Output部件的输出窗口</span></span><br><span class="line"><span class="hljs-keyword">with</span> out:</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):</span><br><span class="line">        print(i, <span class="hljs-string">'Hello world!'</span>)</span><br><span class="line">    display(YouTubeVideo(<span class="hljs-string">'eWzY2nGfkXk'</span>)) <span class="hljs-comment"># 可以展示任意部件，甚至视频</span></span><br><span class="line">    </span><br><span class="line">out</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>🔖 注意：Output部件会将所有输出都一致输出到out窗口中。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190804111953.png" alt></p>
-<hr>
-<p>我们也可以使用<kbd>append_stdout</kbd>、<kbd>append_stderr</kbd>和<kbd>append_display_data</kbd>方法来将输出直接附加到output小部件。</p>
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190804112418.png" alt></p>
-<blockquote>
-<p>⚠️ 注意，<code>append_display_data</code>目前不能用于显示小部件.</p>
-</blockquote>
-<p>我们可以使用<code>IPython.display</code>清除输出。或者我们可以直接调用小部件的<code>clear_output</code>方法:</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">out.clear_output()</span><br></pre></td></tr></table></figure>
-
-<p><code>clear_output</code>方法可以传入<code>wait</code>参数，若设置为<code>True</code>,则<code>clear_output</code>方法不会直接清除输出，而是当小部件下次收到要显示的内容时，它们将被清除。这在替换output小部件中的内容时非常有用:它通过避免在调用<code>clear_output</code>后对小部件的大小进行不协调的调整，从而实现更平滑的转换。</p>
-<hr>
-<h4 id="交互基础的输出小部件"><a href="#交互基础的输出小部件" class="headerlink" title="交互基础的输出小部件"></a>交互基础的输出小部件</h4><p>输出部件本身也可以用来创建带有小部件和代码输出的丰富布局。定制交互UI外观的一个简单方法是使用<code>interactive_output</code>函数将控件连接到返回的output小部件中捕获输出的函数。</p>
-<figure class="highlight python hljs"><table><tr><td class="code"><pre><span class="line">a = widgets.IntSlider(description=<span class="hljs-string">'a'</span>)</span><br><span class="line">b = widgets.IntSlider(description=<span class="hljs-string">'b'</span>)</span><br><span class="line">c = widgets.IntSlider(description=<span class="hljs-string">'c'</span>)</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span><span class="hljs-params">(a, b, c)</span>:</span></span><br><span class="line">    print(<span class="hljs-string">'&#123;&#125;*&#123;&#125;*&#123;&#125;=&#123;&#125;'</span>.format(a, b, c, a*b*c))</span><br><span class="line"></span><br><span class="line">out = widgets.interactive_output(f, &#123;<span class="hljs-string">'a'</span>: a, <span class="hljs-string">'b'</span>: b, <span class="hljs-string">'c'</span>: c&#125;)	<span class="hljs-comment"># 第一个参数： 交互输出函数， 第二个参数： 传递参数值</span></span><br><span class="line">widgets.HBox([widgets.VBox([a, b, c]), out])</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/BingoBounce/Personal_Img_Bed/master/img/20190804114510.png" alt></p>
-<hr>
-<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><ol>
-<li><a href="https://ipywidgets.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">ipywidgets docs</a></li>
-</ol>
-
+            <p>Jupyter插件ipywidgets的使用手册</p>
         </div>
         
         
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-mobile is-flex">
+            <div class="level-start">
+                
+                <div class="level-item is-size-7 is-uppercase">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Jupyter-Widgets/">Jupyter Widgets</a>,&nbsp;<a class="has-link-grey -link" href="/tags/教程/">教程</a>
+                </div>
+                
+            </div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/08/02/jupyter-ipywidgets/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -483,7 +269,7 @@
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
         
 <div class="card widget">
@@ -492,7 +278,7 @@
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Lucas">
+                        <img class="image is-128x128 has-mb-6" src="/images/giphy.gif" alt="Lucas">
                     
                     
                     <p class="is-size-4 is-block">
@@ -674,18 +460,6 @@
     </div>
 </div>
     
-        
-<!-- <div class="card widget"> -->
-<div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
-    </div>
-</div>
-
-    
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
@@ -719,7 +493,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -738,7 +512,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -757,7 +531,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -776,7 +550,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -914,6 +688,18 @@
     </div>
 </div>
         
+            
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
+        
         </div>
     
 </div>
@@ -955,7 +741,7 @@
             
             <a href="/2019/08/08/note-3/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第3话">
+                    <img class="thumbnail" src="/images/day3.jpg" alt="每日一记： 第3话">
                 </p>
             </a>
             
@@ -974,7 +760,7 @@
             
             <a href="/2019/08/07/note-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第2话">
+                    <img class="thumbnail" src="/images/day2.jpg" alt="每日一记： 第2话">
                 </p>
             </a>
             
@@ -993,7 +779,7 @@
             
             <a href="/2019/08/06/Algorithm-2/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="《算法图解》学习笔记：中部">
+                    <img class="thumbnail" src="/images/algorithm.jpg" alt="《算法图解》学习笔记：中部">
                 </p>
             </a>
             
@@ -1012,7 +798,7 @@
             
             <a href="/2019/08/05/note-1/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="每日一记： 第1话">
+                    <img class="thumbnail" src="/images/day1.jpg" alt="每日一记： 第1话">
                 </p>
             </a>
             
@@ -1149,6 +935,18 @@
         </div>
     </div>
 </div>
+    
+        
+<!-- <div class="card widget"> -->
+<div class="card widget is-hidden-mobile">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Algorithm/" style="font-size: 12.5px;">Algorithm</a> <a href="/tags/Jupyter-Widgets/" style="font-size: 10px;">Jupyter Widgets</a> <a href="/tags/Warning/" style="font-size: 10px;">Warning</a> <a href="/tags/matplotlib/" style="font-size: 15px;">matplotlib</a> <a href="/tags/pandas-cookbook/" style="font-size: 10px;">pandas-cookbook</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/图书/" style="font-size: 12.5px;">图书</a> <a href="/tags/教程/" style="font-size: 17.5px;">教程</a> <a href="/tags/晨间日记/" style="font-size: 10px;">晨间日记</a> <a href="/tags/每日一记/" style="font-size: 15px;">每日一记</a>
+    </div>
+</div>
+
     
     
 </div>
