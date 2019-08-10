@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://bingobounce.github.io/"/>
-  <updated>2019-08-08T09:41:40.159Z</updated>
+  <updated>2019-08-10T01:22:19.440Z</updated>
   <id>https://bingobounce.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>晨间日记</title>
+    <link href="https://bingobounce.github.io/2019/08/10/%E6%99%A8%E9%97%B4%E6%97%A5%E8%AE%B0/"/>
+    <id>https://bingobounce.github.io/2019/08/10/晨间日记/</id>
+    <published>2019-08-10T01:22:19.000Z</published>
+    <updated>2019-08-10T01:22:19.440Z</updated>
+    
+    <summary type="html">
+    
+      晨间日记
+    
+    </summary>
+    
+      <category term="Others" scheme="https://bingobounce.github.io/categories/Others/"/>
+    
+    
+      <category term="晨间日记" scheme="https://bingobounce.github.io/tags/%E6%99%A8%E9%97%B4%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>每日一记： 第3话</title>
@@ -100,9 +120,9 @@
     
       <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
     
-      <category term="matplotlib" scheme="https://bingobounce.github.io/tags/matplotlib/"/>
-    
       <category term="每日一记" scheme="https://bingobounce.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/"/>
+    
+      <category term="matplotlib" scheme="https://bingobounce.github.io/tags/matplotlib/"/>
     
   </entry>
   
@@ -236,9 +256,9 @@
       <category term="python" scheme="https://bingobounce.github.io/categories/python/"/>
     
     
-      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
-    
       <category term="Warning" scheme="https://bingobounce.github.io/tags/Warning/"/>
+    
+      <category term="python" scheme="https://bingobounce.github.io/tags/python/"/>
     
   </entry>
   
