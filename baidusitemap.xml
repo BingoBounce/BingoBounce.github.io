@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bingobounce.github.io/2019/08/02/pandas-cookbook/</loc>
-    <lastmod>2019-08-10</lastmod>
-  </url>  <url>
-    <loc>https://bingobounce.github.io/2019/08/08/note-3/</loc>
-    <lastmod>2019-08-10</lastmod>
-  </url>  <url>
-    <loc>https://bingobounce.github.io/2019/08/07/note-2/</loc>
-    <lastmod>2019-08-10</lastmod>
-  </url>  <url>
-    <loc>https://bingobounce.github.io/2019/08/05/note-1/</loc>
-    <lastmod>2019-08-10</lastmod>
-  </url>  <url>
     <loc>https://bingobounce.github.io/2019/07/26/matplotlib_spines/</loc>
-    <lastmod>2019-08-10</lastmod>
+    <lastmod>2019-08-11</lastmod>
   </url>  <url>
     <loc>https://bingobounce.github.io/2019/08/04/matplotlib/</loc>
-    <lastmod>2019-08-10</lastmod>
-  </url>  <url>
-    <loc>https://bingobounce.github.io/2019/08/02/jupyter-ipywidgets/</loc>
-    <lastmod>2019-08-10</lastmod>
+    <lastmod>2019-08-11</lastmod>
   </url>  <url>
     <loc>https://bingobounce.github.io/2019/07/25/import/</loc>
-    <lastmod>2019-08-10</lastmod>
+    <lastmod>2019-08-11</lastmod>
+  </url>  <url>
+    <loc>https://bingobounce.github.io/2019/08/02/jupyter-ipywidgets/</loc>
+    <lastmod>2019-08-11</lastmod>
+  </url>  <url>
+    <loc>https://bingobounce.github.io/2019/08/08/note-3/</loc>
+    <lastmod>2019-08-11</lastmod>
+  </url>  <url>
+    <loc>https://bingobounce.github.io/2019/08/05/note-1/</loc>
+    <lastmod>2019-08-11</lastmod>
   </url>  <url>
     <loc>https://bingobounce.github.io/2019/08/06/Algorithm-2/</loc>
-    <lastmod>2019-08-10</lastmod>
+    <lastmod>2019-08-11</lastmod>
   </url>  <url>
     <loc>https://bingobounce.github.io/2019/08/02/Algorithm-1/</loc>
-    <lastmod>2019-08-10</lastmod>
+    <lastmod>2019-08-11</lastmod>
+  </url>  <url>
+    <loc>https://bingobounce.github.io/2019/08/02/pandas-cookbook/</loc>
+    <lastmod>2019-08-11</lastmod>
+  </url>  <url>
+    <loc>https://bingobounce.github.io/2019/08/07/note-2/</loc>
+    <lastmod>2019-08-11</lastmod>
   </url>
 </urlset>
